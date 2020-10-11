@@ -1,8 +1,8 @@
-# HOPM Docker
+# UnrealIRCD Docker
 [![Docker Pulls](https://img.shields.io/docker/pulls/ircd/unrealircd?style=for-the-badge)](https://hub.docker.com/r/ircd/unrealircd)
 [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/ircd/unrealircd/latest?style=for-the-badge)](https://hub.docker.com/r/ircd/unrealircd/tags)
 [![GitHub](https://img.shields.io/github/license/adamus1red/docker-unrealircd?style=for-the-badge)](https://github.com/adamus1red/docker-unrealircd)
-## What is HOPM
+## What is UnrealIRCD
 UnrealIRCd is an Open Source IRC Server, serving thousands of networks since 1999. It runs on Linux, OS X and Windows and is currently the most widely deployed IRCd with a market share of 42%. UnrealIRCd is a highly advanced IRCd with a strong focus on modularity, an advanced and highly configurable configuration file. Key features include SSL/TLS, cloaking, its advanced anti-flood and anti-spam systems, swear filtering and module support. 
 
 # Configuration
