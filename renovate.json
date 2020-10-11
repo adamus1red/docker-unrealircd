@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "config:base",
+    "docker:enableMajor"
+  ],
+  "packageRules": [
+    {
+      "datasources": ["docker"],
+      "packageNames": ["alpine"],
+      "versioning": "semver"
+    },
+    {
+      "updateTypes": ["minor","patch","pin","digest"],
+      "automerge": true
+    }
+  ],
+  "includeForks": true
+}
