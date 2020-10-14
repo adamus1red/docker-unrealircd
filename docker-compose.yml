@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  unrealircd:
+    build: 
+      context: . 
+      dockerfile: Dockerfile
+      args:
+        VER: 5.0.7
+    image: ircd/unrealircd:latest
+    volumes:
+      - "/path/to/unrealircd:/ircd"
