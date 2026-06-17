@@ -2,7 +2,7 @@ ARG PKG="wget gcc make binutils libc6-compat g++ openssl-dev openssl curl curl-d
 ARG VER="6.2.5"
 ARG UID=10000
 
-FROM alpine:3.23.2
+FROM alpine:3.24.1
 ARG PKG
 ARG VER
 ARG UID
