@@ -13,7 +13,7 @@ WORKDIR /usr/src/ircd
 RUN set -x \
     && apk add --no-cache --virtual build ${PKG} && apk add --no-cache libcurl \
     && wget -O /tmp/unrealircd.tar.gz https://www.unrealircd.org/downloads/unrealircd-${VER}.tar.gz \
-    && wget -O /tmp/unrealircd.tar.gz.asc https://www.unrealircd.org/downloads/unrealircd-6.2.5.tar.gz.asc \
+    && wget -O /tmp/unrealircd.tar.gz.asc https://www.unrealircd.org/downloads/unrealircd-${VER}.tar.gz.asc \
     && wget -O /tmp/unrealircd.keys https://raw.githubusercontent.com/unrealircd/unrealircd/unreal60_dev/doc/KEYS \
     && gpg --import /tmp/unrealircd.keys \
     && gpg --verify --keyring /tmp/unrealircd.keys /tmp/unrealircd.tar.gz.asc \
