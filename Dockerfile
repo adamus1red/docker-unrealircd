@@ -1,5 +1,5 @@
-ARG PKG="wget gcc make binutils libc6-compat g++ openssl-dev openssl curl curl-dev"
-ARG VER="5.0.7"
+ARG PKG="wget gcc make binutils libc6-compat g++ openssl-dev openssl curl curl-dev gnupg"
+ARG VER="6.2.5"
 ARG UID=10000
 
 FROM alpine:3.23.2
@@ -12,8 +12,12 @@ COPY ./config.settings /tmp/config.settings
 WORKDIR /usr/src/ircd
 RUN set -x \
     && apk add --no-cache --virtual build ${PKG} && apk add --no-cache libcurl \
-    && wget -O /tmp/unrealircd https://www.unrealircd.org/downloads/unrealircd-${VER}.tar.gz \
-    && tar xvfz /tmp/unrealircd \
+    && wget -O /tmp/unrealircd.tar.gz https://www.unrealircd.org/downloads/unrealircd-${VER}.tar.gz \
+    && wget /tmp/unrealircd.tar.gz.asc https://www.unrealircd.org/downloads/unrealircd-6.2.5.tar.gz.asc \
+    && wget /tmp/unrealircd.keys https://raw.githubusercontent.com/unrealircd/unrealircd/unreal60_dev/doc/KEYS \
+    && gpg --import /tmp/unrealircd.keys \
+    && gpg --verify --keyring /tmp/unrealircd.keys https://www.unrealircd.org/downloads/unrealircd-6.2.5.tar.gz.asc \
+    && tar xvfz /tmp/unrealircd.tar.gz \
     && cd ./unrealircd-${VER}/ \
     && cp /tmp/config.settings /usr/src/ircd/unrealircd-${VER}/config.settings \
     && ./Config -quick \
@@ -26,4 +30,4 @@ WORKDIR /ircd
 RUN set -x \
     && chown -R unreal:unreal /ircd /app
 USER unreal
-CMD ["/bin/sh" ]
+CMD ["/app/unrealircd/unrealircd start" ]
