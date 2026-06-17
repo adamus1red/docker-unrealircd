@@ -16,7 +16,7 @@ RUN set -x \
     && wget -O /tmp/unrealircd.tar.gz.asc https://www.unrealircd.org/downloads/unrealircd-6.2.5.tar.gz.asc \
     && wget -O /tmp/unrealircd.keys https://raw.githubusercontent.com/unrealircd/unrealircd/unreal60_dev/doc/KEYS \
     && gpg --import /tmp/unrealircd.keys \
-    && gpg --verify --keyring /tmp/unrealircd.keys https://www.unrealircd.org/downloads/unrealircd-6.2.5.tar.gz.asc \
+    && gpg --verify --keyring /tmp/unrealircd.keys /tmp/unrealircd.tar.gz.asc \
     && tar xvfz /tmp/unrealircd.tar.gz \
     && cd ./unrealircd-${VER}/ \
     && cp /tmp/config.settings /usr/src/ircd/unrealircd-${VER}/config.settings \
