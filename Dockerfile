@@ -30,4 +30,4 @@ WORKDIR /ircd
 RUN set -x \
     && chown -R unreal:unreal /ircd /app
 USER unreal
-CMD ["/app/unrealircd/unrealircd start" ]
+CMD ["/app/unrealircd/bin/unrealircd -F" ]
